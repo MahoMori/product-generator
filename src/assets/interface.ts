@@ -7,8 +7,19 @@ export interface ObjectString {
 //   selected: boolean;
 // }
 
+export interface AddNamePayload {
+  description: string;
+  seedWords: string[];
+  generatedText: string[];
+}
+
+interface NameState extends AddNamePayload {
+  id: string;
+}
+
 export interface GeneratedTextState {
-  [key: string]: ObjectString[];
+  ad: ObjectString[];
+  name: NameState[];
 }
 
 export interface JsonObject {
@@ -21,5 +32,11 @@ export interface JsonObject {
 }
 
 export interface FetchComponentProp {
-  aiFetch: (jsonObject: JsonObject, kw: string) => void;
+  aiFetch: (
+    jsonObject: JsonObject,
+    originalText: string,
+    kw: string,
+    description?: string | undefined,
+    seedWords?: string[] | undefined
+  ) => void;
 }

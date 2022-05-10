@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+
+// ----- redux -----
+import { useSelector } from "react-redux";
+import { TStore } from "../../redux/store";
+
+// ----- interface -----
 import { FetchComponentProp } from "../../assets/interface";
 
 const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
-  const [detailInput, setDetailInput] = useState<string>();
+  const generatedTextState = useSelector((state: TStore) => state);
+
+  const [detailInput, setDetailInput] = useState<string>("");
 
   const productAd = {
     prompt: `Write a creative ad for the following product:\n\nProduct: ${detailInput}`,
@@ -18,7 +26,7 @@ const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          aiFetch(productAd, "ad");
+          aiFetch(productAd, detailInput, "ad");
         }}
       >
         <textarea onChange={(e) => setDetailInput(e.target.value)}></textarea>
