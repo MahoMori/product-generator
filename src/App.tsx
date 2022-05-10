@@ -101,7 +101,7 @@ function App() {
   return (
     <div className="App">
       <Header>
-        <h1>💡Creative Product Generator🛍️</h1>
+        <h1>💡 Creative Product Generator 🛍️</h1>
       </Header>
 
       <Main>
