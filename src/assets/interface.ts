@@ -40,3 +40,16 @@ export interface FetchComponentProp {
     seedWords?: string[] | undefined
   ) => void;
 }
+
+export interface AdListComponentProp {
+  ad: ObjectString;
+}
+
+export interface NameListComponentProp {
+  name: NameState;
+}
+
+export interface ContextProviderValue {
+  userSelected: ObjectString;
+  setUserSelected: React.Dispatch<React.SetStateAction<ObjectString>>;
+}

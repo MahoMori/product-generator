@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import { TStore } from "../../redux/store";
 
 // ----- interface -----
-import { FetchComponentProp } from "../../assets/interface";
+import { FetchComponentProp, ObjectString } from "../../assets/interface";
+import ProductAdList from "./ProductAdList";
 
 const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
   const generatedTextState = useSelector((state: TStore) => state);
@@ -32,6 +33,12 @@ const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
         <textarea onChange={(e) => setDetailInput(e.target.value)}></textarea>
         <button type="submit">Generate</button>
       </form>
+      <div>
+        {generatedTextState.ad.length > 0 &&
+          generatedTextState.ad.map((ad: ObjectString) => (
+            <ProductAdList ad={ad} />
+          ))}
+      </div>
     </div>
   );
 };

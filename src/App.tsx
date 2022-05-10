@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import "./App.css";
 
 // ----- redux -----
@@ -7,14 +7,30 @@ import { TStore } from "./redux/store";
 import { addGeneratedAd, addGeneratedName } from "./redux/generatedTextSlice";
 
 // ----- interface -----
-import { JsonObject } from "./assets/interface";
+import {
+  ContextProviderValue,
+  JsonObject,
+  ObjectString,
+} from "./assets/interface";
 
 // ----- components -----
 import ProductAd from "./components/product-ad/ProductAd";
+import PreviewPanel from "./components/preview-panel/PreviewPanel";
+
+// ----- useContext -----
+export const UserSelected = React.createContext<ContextProviderValue>(
+  {} as ContextProviderValue
+);
 
 function App() {
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
+
+  const [userSelected, setUserSelected] = useState<ObjectString>({
+    ad: "",
+    name: "",
+  });
+  // const value = { userSelected, setUserSelected };
 
   const productName = {
     prompt:
@@ -76,7 +92,10 @@ function App() {
 
   return (
     <div className="App">
-      <ProductAd aiFetch={aiFetch} />
+      <UserSelected.Provider value={{ userSelected, setUserSelected }}>
+        <PreviewPanel />
+        <ProductAd aiFetch={aiFetch} />
+      </UserSelected.Provider>
     </div>
   );
 }
