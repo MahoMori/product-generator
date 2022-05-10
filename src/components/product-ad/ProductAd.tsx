@@ -41,7 +41,7 @@ const ProductAd = () => {
         console.log(data.choices[0].text);
         dispatch(
           addGeneratedAd({
-            originalText: originalText as string,
+            originalText,
             generatedText: data.choices[0].text,
           })
         );
@@ -58,7 +58,14 @@ const ProductAd = () => {
           aiFetch(productAd, detailInput);
         }}
       >
-        <textarea onChange={(e) => setDetailInput(e.target.value)}></textarea>
+        <div>
+          <p>Product detail:</p>
+          <textarea
+            onChange={(e) => setDetailInput(e.target.value)}
+            placeholder="Learning Room is a virtual environment to help students from kindergarten to high school excel in school."
+          ></textarea>
+        </div>
+
         <button type="submit">Generate</button>
       </form>
       <div>

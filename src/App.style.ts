@@ -3,7 +3,7 @@ import { Section } from "./assets/style/styleVariables";
 
 export const Header = styled.header`
   width: 100%;
-  height: 5vh;
+  height: 6vh;
 
   text-align: center;
 `;
@@ -11,7 +11,7 @@ export const Header = styled.header`
 export const Main = styled.main`
   display: flex;
   width: 100%;
-  height: 95vh;
+  height: 94vh;
 
   background: pink;
 `;

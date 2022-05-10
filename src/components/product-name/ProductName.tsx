@@ -17,7 +17,7 @@ const ProductName = () => {
   const productName = {
     prompt: `Product description: A home milkshake maker\nSeed words: fast, healthy, compact.\nProduct names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n\nProduct description: ${descriptionInput}\nSeed words: ${seedWordsInput.join(
       ", "
-    )}adaptable, fit, omni-fit.`,
+    )}.`,
     temperature: 0.8,
     max_tokens: 60,
     top_p: 1.0,
@@ -48,8 +48,8 @@ const ProductName = () => {
 
         dispatch(
           addGeneratedName({
-            description: description as string,
-            seedWords: seedWords as string[],
+            description,
+            seedWords,
             generatedText: nameArr,
           })
         );
@@ -75,9 +75,27 @@ const ProductName = () => {
 
         <div>
           <p>Seed words:</p>
-          <input></input>
-          <input></input>
-          <input></input>
+          <input
+            type="text"
+            placeholder="adaptable"
+            onChange={(e) =>
+              setSeedWordsInput((prev) => [e.target.value, prev[1], prev[2]])
+            }
+          ></input>
+          <input
+            type="text"
+            placeholder="fit"
+            onChange={(e) =>
+              setSeedWordsInput((prev) => [prev[0], e.target.value, prev[2]])
+            }
+          ></input>
+          <input
+            type="text"
+            placeholder="omni-fit"
+            onChange={(e) =>
+              setSeedWordsInput((prev) => [prev[0], prev[1], e.target.value])
+            }
+          ></input>
         </div>
         <button type="submit">Generate</button>
       </form>
