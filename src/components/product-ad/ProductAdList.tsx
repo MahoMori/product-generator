@@ -3,7 +3,7 @@ import { UserSelected } from "../../App";
 import { AdListComponentProp } from "../../assets/interface";
 
 const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
-  const { userSelected, setUserSelected } = useContext(UserSelected);
+  const { setUserSelected } = useContext(UserSelected);
 
   return (
     <div>

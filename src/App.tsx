@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createContext } from "react";
-import "./App.css";
 
 // ----- redux -----
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,10 @@ import {
 import ProductAd from "./components/product-ad/ProductAd";
 import PreviewPanel from "./components/preview-panel/PreviewPanel";
 
+// ----- styled-components -----
+import { Header, Main } from "./App.style";
+import { Section } from "./assets/style/styleVariables";
+
 // ----- useContext -----
 export const UserSelected = React.createContext<ContextProviderValue>(
   {} as ContextProviderValue
@@ -24,7 +27,7 @@ export const UserSelected = React.createContext<ContextProviderValue>(
 
 function App() {
   const dispatch = useDispatch();
-  const generatedTextState = useSelector((state: TStore) => state);
+  // const generatedTextState = useSelector((state: TStore) => state);
 
   const [userSelected, setUserSelected] = useState<ObjectString>({
     ad: "",
@@ -92,10 +95,19 @@ function App() {
 
   return (
     <div className="App">
-      <UserSelected.Provider value={{ userSelected, setUserSelected }}>
-        <PreviewPanel />
-        <ProductAd aiFetch={aiFetch} />
-      </UserSelected.Provider>
+      <Header>
+        <h1>💡Creative Product Generator🛍️</h1>
+      </Header>
+
+      <Main>
+        <UserSelected.Provider value={{ userSelected, setUserSelected }}>
+          <PreviewPanel />
+
+          <Section>
+            <ProductAd aiFetch={aiFetch} />
+          </Section>
+        </UserSelected.Provider>
+      </Main>
     </div>
   );
 }
