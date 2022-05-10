@@ -49,7 +49,12 @@ export interface NameListComponentProp {
   name: NameState;
 }
 
-export interface ContextProviderValue {
+export interface ContextUserSelected {
   userSelected: ObjectString;
   setUserSelected: React.Dispatch<React.SetStateAction<ObjectString>>;
+}
+
+export interface ContextLeftValue {
+  leftValue: string;
+  setLeftValue: React.Dispatch<React.SetStateAction<string>>;
 }

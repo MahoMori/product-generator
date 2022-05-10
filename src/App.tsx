@@ -7,7 +7,8 @@ import { addGeneratedAd, addGeneratedName } from "./redux/generatedTextSlice";
 
 // ----- interface -----
 import {
-  ContextProviderValue,
+  ContextLeftValue,
+  ContextUserSelected,
   JsonObject,
   ObjectString,
 } from "./assets/interface";
@@ -17,12 +18,16 @@ import ProductAd from "./components/product-ad/ProductAd";
 import PreviewPanel from "./components/preview-panel/PreviewPanel";
 
 // ----- styled-components -----
-import { Header, Main } from "./App.style";
+import { Header, Main, RightPanelSection } from "./App.style";
 import { Section } from "./assets/style/styleVariables";
 
 // ----- useContext -----
-export const UserSelected = React.createContext<ContextProviderValue>(
-  {} as ContextProviderValue
+export const UserSelected = React.createContext<ContextUserSelected>(
+  {} as ContextUserSelected
+);
+
+export const LeftValue = React.createContext<ContextLeftValue>(
+  {} as ContextLeftValue
 );
 
 function App() {
@@ -33,7 +38,8 @@ function App() {
     ad: "",
     name: "",
   });
-  // const value = { userSelected, setUserSelected };
+
+  const [leftValue, setLeftValue] = useState<string>("");
 
   const productName = {
     prompt:
@@ -52,8 +58,6 @@ function App() {
     description?: string,
     seedWords?: string[]
   ) => {
-    // const jsonObject = kw === "ad" ? productAd : productName;
-
     fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
       headers: {
@@ -87,7 +91,6 @@ function App() {
             })
           );
         }
-        // dispatch(addGeneratedText({ generatedText: data.choices[0].text, kw }));
       });
   };
 
@@ -103,9 +106,13 @@ function App() {
         <UserSelected.Provider value={{ userSelected, setUserSelected }}>
           <PreviewPanel />
 
-          <Section>
-            <ProductAd aiFetch={aiFetch} />
-          </Section>
+          <LeftValue.Provider value={{ leftValue, setLeftValue }}>
+            <RightPanelSection>
+              {/* <PanelParentDiv leftValue={}> */}
+              <ProductAd aiFetch={aiFetch} />
+              {/* </PanelParentDiv> */}
+            </RightPanelSection>
+          </LeftValue.Provider>
         </UserSelected.Provider>
       </Main>
     </div>
