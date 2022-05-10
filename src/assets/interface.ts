@@ -13,7 +13,7 @@ export interface AddNamePayload {
   generatedText: string[];
 }
 
-interface NameState extends AddNamePayload {
+export interface NameState extends AddNamePayload {
   id: string;
 }
 
@@ -31,15 +31,15 @@ export interface JsonObject {
   presence_penalty: number;
 }
 
-export interface FetchComponentProp {
-  aiFetch: (
-    jsonObject: JsonObject,
-    originalText: string,
-    kw: string,
-    description?: string | undefined,
-    seedWords?: string[] | undefined
-  ) => void;
-}
+// export interface FetchComponentProp {
+//   aiFetch: (
+//     jsonObject: JsonObject,
+//     originalText: string,
+//     kw: string,
+//     description?: string | undefined,
+//     seedWords?: string[] | undefined
+//   ) => void;
+// }
 
 export interface AdListComponentProp {
   ad: ObjectString;

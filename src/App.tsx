@@ -43,61 +43,6 @@ function App() {
 
   const [leftValue, setLeftValue] = useState<string>("0");
 
-  const productName = {
-    prompt:
-      "Product description: A home milkshake maker\nSeed words: fast, healthy, compact.\nProduct names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n\nProduct description: A pair of shoes that can fit any foot size.\nSeed words: adaptable, fit, omni-fit.",
-    temperature: 0.8,
-    max_tokens: 60,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
-  };
-
-  const aiFetch = (
-    jsonObject: JsonObject,
-    originalText: string,
-    kw: string,
-    description?: string,
-    seedWords?: string[]
-  ) => {
-    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_API}`,
-      },
-      body: JSON.stringify(jsonObject),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (kw === "ad") {
-          console.log(data.choices[0].text);
-          dispatch(
-            addGeneratedAd({
-              originalText,
-              generatedText: data.choices[0].text,
-            })
-          );
-        } else {
-          console.log(data.choices[0].text);
-          const text: string = data.choices[0].text;
-          const nameArr: string[] = text
-            .substring(text.indexOf(":") + 2)
-            .split(", ");
-
-          dispatch(
-            addGeneratedName({
-              description: description as string,
-              seedWords: seedWords as string[],
-              generatedText: nameArr,
-            })
-          );
-        }
-      });
-  };
-
-  useEffect(() => {}, []);
-
   return (
     <div className="App">
       <Header>
@@ -111,9 +56,11 @@ function App() {
           <LeftValue.Provider value={{ leftValue, setLeftValue }}>
             <RightPanelSection>
               <PanelParentDiv leftValue={leftValue}>
-                <ProductAd aiFetch={aiFetch} />
+                {/* components */}
+                <ProductAd />
                 <ProductName />
                 <SharePanel />
+                {/* components */}
               </PanelParentDiv>
             </RightPanelSection>
           </LeftValue.Provider>

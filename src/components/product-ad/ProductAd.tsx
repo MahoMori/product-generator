@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 
 // ----- redux -----
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TStore } from "../../redux/store";
 
 // ----- interface -----
-import { FetchComponentProp, ObjectString } from "../../assets/interface";
+import { JsonObject, ObjectString } from "../../assets/interface";
 import ProductAdList from "./ProductAdList";
 
-import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 import { ProductAdDiv } from "./ProductAd.style";
+import { addGeneratedAd } from "../../redux/generatedTextSlice";
 
-const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
+const ProductAd = () => {
+  const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
 
   const [detailInput, setDetailInput] = useState<string>("");
@@ -26,6 +27,27 @@ const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
     presence_penalty: 0.0,
   };
 
+  const aiFetch = (jsonObject: JsonObject, originalText: string) => {
+    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API}`,
+      },
+      body: JSON.stringify(jsonObject),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.choices[0].text);
+        dispatch(
+          addGeneratedAd({
+            originalText: originalText as string,
+            generatedText: data.choices[0].text,
+          })
+        );
+      });
+  };
+
   return (
     <ProductAdDiv>
       <RightPanelArrows panelTitle={"Generate Product Ad"} />
@@ -33,7 +55,7 @@ const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          aiFetch(productAd, detailInput, "ad");
+          aiFetch(productAd, detailInput);
         }}
       >
         <textarea onChange={(e) => setDetailInput(e.target.value)}></textarea>
