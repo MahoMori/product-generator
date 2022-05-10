@@ -18,7 +18,7 @@ import ProductAd from "./components/product-ad/ProductAd";
 import PreviewPanel from "./components/preview-panel/PreviewPanel";
 
 // ----- styled-components -----
-import { Header, Main, RightPanelSection } from "./App.style";
+import { Header, Main, PanelParentDiv, RightPanelSection } from "./App.style";
 import { Section } from "./assets/style/styleVariables";
 
 // ----- useContext -----
@@ -39,7 +39,7 @@ function App() {
     name: "",
   });
 
-  const [leftValue, setLeftValue] = useState<string>("");
+  const [leftValue, setLeftValue] = useState<string>("0");
 
   const productName = {
     prompt:
@@ -108,9 +108,9 @@ function App() {
 
           <LeftValue.Provider value={{ leftValue, setLeftValue }}>
             <RightPanelSection>
-              {/* <PanelParentDiv leftValue={}> */}
-              <ProductAd aiFetch={aiFetch} />
-              {/* </PanelParentDiv> */}
+              <PanelParentDiv leftValue={leftValue}>
+                <ProductAd aiFetch={aiFetch} />
+              </PanelParentDiv>
             </RightPanelSection>
           </LeftValue.Provider>
         </UserSelected.Provider>

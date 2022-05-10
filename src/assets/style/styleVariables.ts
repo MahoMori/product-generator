@@ -7,14 +7,6 @@ export const Section = styled.section`
   background: white;
 `;
 
-export const PanelParentDiv = styled.div<{ leftValue: string }>`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: ${(props) => (props.leftValue ? props.leftValue : "0")};
-  transition: left 1s;
-`;
-
 export const PanelStyle = styled.div`
   width: 100%;
   height: 100%;

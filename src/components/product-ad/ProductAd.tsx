@@ -9,6 +9,7 @@ import { FetchComponentProp, ObjectString } from "../../assets/interface";
 import ProductAdList from "./ProductAdList";
 
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
+import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 
 const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
   const generatedTextState = useSelector((state: TStore) => state);
@@ -27,10 +28,7 @@ const ProductAd: React.VFC<FetchComponentProp> = ({ aiFetch }) => {
   return (
     <div>
       {/* ↑　PanelStyle */}
-      <div>
-        <BsArrowLeftCircle />
-        <BsArrowRightCircle />
-      </div>
+      <RightPanelArrows panelTitle={"Generate Product Ad"} />
 
       <form
         onSubmit={(e) => {
