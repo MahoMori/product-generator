@@ -11,10 +11,10 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
     <div>
       <button
         onClick={() => {
-          setLeftValue((prev) => (parseInt(prev) - 100).toString());
+          setLeftValue((prev) => (parseInt(prev) + 100).toString());
           console.log(leftValue);
         }}
-        disabled={leftValue === "-200" ? true : false}
+        disabled={leftValue === "0" ? true : false}
       >
         <BsArrowLeftCircle />
       </button>
@@ -25,10 +25,10 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
 
       <button
         onClick={() => {
-          setLeftValue((prev) => (parseInt(prev) + 100).toString());
+          setLeftValue((prev) => (parseInt(prev) - 100).toString());
           console.log(leftValue);
         }}
-        disabled={leftValue === "0" ? true : false}
+        disabled={leftValue === "-200" ? true : false}
       >
         <BsArrowRightCircle />
       </button>

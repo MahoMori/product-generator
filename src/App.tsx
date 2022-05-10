@@ -14,8 +14,10 @@ import {
 } from "./assets/interface";
 
 // ----- components -----
-import ProductAd from "./components/product-ad/ProductAd";
 import PreviewPanel from "./components/preview-panel/PreviewPanel";
+import ProductAd from "./components/product-ad/ProductAd";
+import ProductName from "./components/product-name/ProductName";
+import SharePanel from "./components/share-panel/SharePanel";
 
 // ----- styled-components -----
 import { Header, Main, PanelParentDiv, RightPanelSection } from "./App.style";
@@ -110,6 +112,8 @@ function App() {
             <RightPanelSection>
               <PanelParentDiv leftValue={leftValue}>
                 <ProductAd aiFetch={aiFetch} />
+                <ProductName />
+                <SharePanel />
               </PanelParentDiv>
             </RightPanelSection>
           </LeftValue.Provider>
