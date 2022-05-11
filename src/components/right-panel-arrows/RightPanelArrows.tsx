@@ -3,12 +3,13 @@ import React, { useContext } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { LeftValue } from "../../App";
 import { ObjectString } from "../../assets/interface";
+import { ArrowsDiv, PanelTitle } from "./RightPanelArrows.style";
 
 const RightPanelArrows = ({ panelTitle }: ObjectString) => {
   const { leftValue, setLeftValue } = useContext(LeftValue);
 
   return (
-    <div>
+    <ArrowsDiv>
       <button
         onClick={() => {
           setLeftValue((prev) => (parseInt(prev) + 100).toString());
@@ -19,9 +20,9 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
         <BsArrowLeftCircle />
       </button>
 
-      <div>
+      <PanelTitle>
         <p>{panelTitle}</p>
-      </div>
+      </PanelTitle>
 
       <button
         onClick={() => {
@@ -32,7 +33,7 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
       >
         <BsArrowRightCircle />
       </button>
-    </div>
+    </ArrowsDiv>
   );
 };
 

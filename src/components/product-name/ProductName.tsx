@@ -3,9 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { JsonObject, NameState } from "../../assets/interface";
 import { TStore } from "../../redux/store";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
-import { ProductNameDiv } from "./ProductName.style";
+import { ProductNameDiv, SeedWordsStyle } from "./ProductName.style";
 import ProductNameList from "./ProductNameList";
 import { addGeneratedName } from "../../redux/generatedTextSlice";
+import {
+  FormStyle,
+  TextareaStyle,
+  GenerateButton,
+  HrLine,
+} from "../../assets/style/styleVariables";
 
 const ProductName = () => {
   const dispatch = useDispatch();
@@ -59,29 +65,31 @@ const ProductName = () => {
   return (
     <ProductNameDiv>
       <RightPanelArrows panelTitle={"Generate Product Name"} />
-      <form
+      <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
           aiFetch(productName, descriptionInput, seedWordsInput);
         }}
       >
-        <div>
+        <TextareaStyle>
           <p>Product description:</p>
           <textarea
+            required
             placeholder="A pair of shoes that can fit any foot size."
             onChange={(e) => setDescriptionInput(e.target.value)}
           ></textarea>
-        </div>
+        </TextareaStyle>
 
-        <div>
+        <SeedWordsStyle>
           <p>Seed words:</p>
           <input
             type="text"
             placeholder="adaptable"
+            required
             onChange={(e) =>
               setSeedWordsInput((prev) => [e.target.value, prev[1], prev[2]])
             }
-          ></input>
+          />
           <input
             type="text"
             placeholder="fit"
@@ -96,9 +104,12 @@ const ProductName = () => {
               setSeedWordsInput((prev) => [prev[0], prev[1], e.target.value])
             }
           ></input>
-        </div>
-        <button type="submit">Generate</button>
-      </form>
+        </SeedWordsStyle>
+        <GenerateButton type="submit">Generate</GenerateButton>
+      </FormStyle>
+
+      <HrLine />
+
       <div>
         {generatedTextState.name.length > 0 &&
           generatedTextState.name.map((name: NameState) => (

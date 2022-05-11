@@ -18,12 +18,12 @@ export const generatedTextSlice = createSlice({
   reducers: {
     addGeneratedAd: (state, action: PayloadAction<ObjectString>) => {
       const { originalText, generatedText } = action.payload;
-      state.ad.push({ id: uuid(), originalText, generatedText });
+      state.ad.unshift({ id: uuid(), originalText, generatedText });
     },
 
     addGeneratedName: (state, action: PayloadAction<AddNamePayload>) => {
       const { description, seedWords, generatedText } = action.payload;
-      state.name.push({ id: uuid(), description, seedWords, generatedText });
+      state.name.unshift({ id: uuid(), description, seedWords, generatedText });
     },
   },
 });

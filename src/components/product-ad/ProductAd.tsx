@@ -11,6 +11,12 @@ import ProductAdList from "./ProductAdList";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 import { ProductAdDiv } from "./ProductAd.style";
 import { addGeneratedAd } from "../../redux/generatedTextSlice";
+import {
+  FormStyle,
+  TextareaStyle,
+  GenerateButton,
+  HrLine,
+} from "../../assets/style/styleVariables";
 
 const ProductAd = () => {
   const dispatch = useDispatch();
@@ -52,22 +58,26 @@ const ProductAd = () => {
     <ProductAdDiv>
       <RightPanelArrows panelTitle={"Generate Product Ad"} />
 
-      <form
+      <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
           aiFetch(productAd, detailInput);
         }}
       >
-        <div>
+        <TextareaStyle>
           <p>Product detail:</p>
           <textarea
+            required
             onChange={(e) => setDetailInput(e.target.value)}
             placeholder="Learning Room is a virtual environment to help students from kindergarten to high school excel in school."
           ></textarea>
-        </div>
+        </TextareaStyle>
 
-        <button type="submit">Generate</button>
-      </form>
+        <GenerateButton type="submit">Generate</GenerateButton>
+      </FormStyle>
+
+      <HrLine />
+
       <div>
         {generatedTextState.ad.length > 0 &&
           generatedTextState.ad.map((ad: ObjectString) => (
