@@ -23,7 +23,6 @@ const SharePanel = () => {
   return (
     <SharePanelDiv>
       <RightPanelArrows panelTitle={"Share your product!"} />
-      SharePanel
       <div>
         <FacebookShareButton
           url={shareUrl}

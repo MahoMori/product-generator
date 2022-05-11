@@ -1,4 +1,6 @@
 import styled from "styled-components";
-import { RightPanelStyle } from "../../assets/style/styleVariables";
+import { color, RightPanelStyle } from "../../assets/style/styleVariables";
 
-export const ProductAdDiv = styled(RightPanelStyle)``;
+export const ProductAdDiv = styled(RightPanelStyle)`
+  background-color: ${color.green};
+`;

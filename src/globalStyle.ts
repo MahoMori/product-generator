@@ -7,6 +7,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+
+    body {
+        /* font-family: 'Hind Siliguri', sans-serif; */
+        font-family: 'Noto Sans JP', sans-serif;
+    }
     
 `;
 

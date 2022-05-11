@@ -1,17 +1,23 @@
 import styled from "styled-components";
-import { Section } from "./assets/style/styleVariables";
+import { color, Section } from "./assets/style/styleVariables";
 
 export const Header = styled.header`
   width: 100%;
-  height: 6vh;
+  height: 7vh;
+
+  background-color: ${color.platinum};
 
   text-align: center;
+
+  & h1 {
+    font-family: "MuseoModerno", cursive;
+  }
 `;
 
 export const Main = styled.main`
   display: flex;
   width: 100%;
-  height: 94vh;
+  height: 93vh;
 
   background: pink;
 `;
