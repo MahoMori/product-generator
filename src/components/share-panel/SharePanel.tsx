@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
-  LineIcon,
-  LineShareButton,
+  EmailShareButton,
+  EmailIcon,
   TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
@@ -11,7 +11,7 @@ import {
 } from "react-share";
 import { UserSelected } from "../../App";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
-import { SharePanelDiv } from "./SharePanel.style";
+import { SharePanelDiv, ShareContainer } from "./SharePanel.style";
 
 const SharePanel = () => {
   const { userSelected } = useContext(UserSelected);
@@ -23,40 +23,48 @@ const SharePanel = () => {
   return (
     <SharePanelDiv>
       <RightPanelArrows panelTitle={"Share your product!"} />
-      <div>
-        <FacebookShareButton
-          url={shareUrl}
-          quote={context}
-          className="Demo__some-network__share-button"
-        >
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
 
-        <TwitterShareButton
-          url={shareUrl}
-          title={contextTwitter}
-          className="Demo__some-network__share-button"
-        >
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
+      <ShareContainer>
+        <img
+          src={require("../../assets/images/share-gif.gif")}
+          alt="share animation gif"
+        />
 
-        <WhatsappShareButton
-          url={shareUrl}
-          title={context}
-          separator=":: "
-          className="Demo__some-network__share-button"
-        >
-          <WhatsappIcon size={32} round />
-        </WhatsappShareButton>
+        <div>
+          <FacebookShareButton
+            url={shareUrl}
+            quote={context}
+            className="Demo__some-network__share-button"
+          >
+            <FacebookIcon size={80} borderRadius={20} />
+          </FacebookShareButton>
 
-        <LineShareButton
-          url={shareUrl}
-          title={context}
-          className="Demo__some-network__share-button"
-        >
-          <LineIcon size={32} round />
-        </LineShareButton>
-      </div>
+          <TwitterShareButton
+            url={shareUrl}
+            title={contextTwitter}
+            className="Demo__some-network__share-button"
+          >
+            <TwitterIcon size={80} borderRadius={20} />
+          </TwitterShareButton>
+
+          <WhatsappShareButton
+            url={shareUrl}
+            title={context}
+            separator=":: "
+            className="Demo__some-network__share-button"
+          >
+            <WhatsappIcon size={80} borderRadius={20} />
+          </WhatsappShareButton>
+
+          <EmailShareButton
+            url={shareUrl}
+            title={context}
+            className="Demo__some-network__share-button"
+          >
+            <EmailIcon size={80} borderRadius={20} />
+          </EmailShareButton>
+        </div>
+      </ShareContainer>
     </SharePanelDiv>
   );
 };
