@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { ObjectString } from "../interface";
 import { device } from "./screenSize";
 
-export const color = {
+export const color: ObjectString = {
   green: "#ABD9CFff",
   blue: "#85C3DCff",
   platinum: "#E9EAE5ff",
@@ -71,4 +72,68 @@ export const GenerateButton = styled.button`
 
 export const HrLine = styled.hr`
   border-color: #000;
+`;
+
+// ----- list style -----
+export const ListDataCard = styled.div`
+  position: relative;
+  padding: 1rem;
+  background-image: linear-gradient(
+    -135deg,
+    transparent 10px,
+    ${color.platinum} 10px
+  );
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border-radius: 3px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    right: 0px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+  }
+`;
+
+export const ListDataDiv = styled.div`
+  position: relative;
+  margin: 1em 0;
+  padding: 25px 10px 7px;
+  border: solid 2px #000;
+  background: #fff;
+  border-radius: 3px;
+
+  & span {
+    position: absolute;
+    display: inline-block;
+    top: -2px;
+    left: -2px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #000;
+    color: #fff;
+  }
+
+  & p {
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+export const SelectButton = styled.button<{ bColor: string }>`
+  display: block;
+  margin: 0.7rem auto;
+  background: ${(props) => color[props.bColor]};
+  border: solid 2px #000;
+  font-size: 1rem;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  width: 8rem;
+  height: 2.25rem;
 `;

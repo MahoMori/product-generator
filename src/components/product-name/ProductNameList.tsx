@@ -1,23 +1,29 @@
 import React, { useContext } from "react";
 import { UserSelected } from "../../App";
 import { NameListComponentProp } from "../../assets/interface";
+import {
+  ListDataCard,
+  ListDataDiv,
+  SelectButton,
+} from "../../assets/style/styleVariables";
 
 const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
   const { setUserSelected } = useContext(UserSelected);
   return (
-    <div>
-      <div>
-        <p>Prompt:</p>
+    <ListDataCard>
+      <ListDataDiv>
+        <span>Prompt:</span>
         <p>{name.description}</p>
         <p>{name.seedWords.join(", ")}</p>
-      </div>
-      <div>
-        <p>Result:</p>
+      </ListDataDiv>
+      <ListDataDiv>
+        <span>Result:</span>
 
         {name.generatedText.map((word) => (
           <div>
             <p>{word}</p>
-            <button
+            <SelectButton
+              bColor={"blue"}
               type="button"
               onClick={() => {
                 setUserSelected((prev) => ({
@@ -27,11 +33,11 @@ const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
               }}
             >
               Select
-            </button>
+            </SelectButton>
           </div>
         ))}
-      </div>
-    </div>
+      </ListDataDiv>
+    </ListDataCard>
   );
 };
 

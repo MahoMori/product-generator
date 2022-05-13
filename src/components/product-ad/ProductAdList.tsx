@@ -1,32 +1,38 @@
 import React, { useContext } from "react";
 import { UserSelected } from "../../App";
 import { AdListComponentProp } from "../../assets/interface";
+import {
+  ListDataCard,
+  ListDataDiv,
+  SelectButton,
+} from "../../assets/style/styleVariables";
 
 const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
   const { setUserSelected } = useContext(UserSelected);
 
   return (
-    <div>
-      <div>
-        <p>Prompt:</p>
+    <ListDataCard>
+      <ListDataDiv>
+        <span>Prompt:</span>
         <p>{ad.originalText}</p>
-      </div>
-      <div>
-        <p>Result:</p>
+      </ListDataDiv>
+      <ListDataDiv>
+        <span>Result:</span>
         <p>{ad.generatedText}</p>
-      </div>
-      <button
-        type="button"
-        onClick={() => {
-          setUserSelected((prev) => ({
-            ad: ad.generatedText,
-            name: prev.name,
-          }));
-        }}
-      >
-        Select
-      </button>
-    </div>
+        <SelectButton
+          bColor={"green"}
+          type="button"
+          onClick={() => {
+            setUserSelected((prev) => ({
+              ad: ad.generatedText,
+              name: prev.name,
+            }));
+          }}
+        >
+          Select
+        </SelectButton>
+      </ListDataDiv>
+    </ListDataCard>
   );
 };
 

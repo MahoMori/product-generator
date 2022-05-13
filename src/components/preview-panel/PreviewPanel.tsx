@@ -14,8 +14,10 @@ const PreviewPanel = () => {
         }}
       >
         <PreviewCard>
-          <p>{userSelected.name}</p>
-          <p>{userSelected.ad}</p>
+          <p>{userSelected.name ? userSelected.name : <i>Product Name</i>}</p>
+          <p>
+            {userSelected.ad ? userSelected.ad : <i>Product Description</i>}
+          </p>
         </PreviewCard>
       </PreviewPanelDiv>
     </Section>

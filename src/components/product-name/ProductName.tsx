@@ -110,12 +110,12 @@ const ProductName = () => {
 
       <HrLine />
 
-      <div>
-        {generatedTextState.name.length > 0 &&
-          generatedTextState.name.map((name: NameState) => (
-            <ProductNameList name={name} />
-          ))}
-      </div>
+      {/* <div> */}
+      {generatedTextState.name.length > 0 &&
+        generatedTextState.name.map((name: NameState) => (
+          <ProductNameList name={name} />
+        ))}
+      {/* </div> */}
     </ProductNameDiv>
   );
 };

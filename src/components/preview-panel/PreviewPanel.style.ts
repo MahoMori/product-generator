@@ -29,4 +29,14 @@ export const PreviewCard = styled.div`
   background-repeat: no-repeat;
   background-size: calc(100% - 0.5rem) calc(100% - 0.5rem);
   background-position: 0 0, 0.5rem 0.5rem;
+
+  & p:first-child {
+    border-bottom: double 5px ${color.pink};
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  & p:last-child {
+    margin-top: 1rem;
+  }
 `;
