@@ -22,8 +22,23 @@ export const generatedTextSlice = createSlice({
     },
 
     addGeneratedName: (state, action: PayloadAction<AddNamePayload>) => {
-      const { description, seedWords, generatedText } = action.payload;
-      state.name.unshift({ id: uuid(), description, seedWords, generatedText });
+      const { description, generatedText } = action.payload;
+      let seedWords = action.payload.seedWords;
+
+      const seedWordsArr = (seedWords: string[]): string[] => {
+        let newArr = seedWords.filter((word) => {
+          return word;
+        });
+        return newArr;
+      };
+      seedWords = seedWordsArr(seedWords);
+
+      state.name.unshift({
+        id: uuid(),
+        description,
+        seedWords,
+        generatedText,
+      });
     },
   },
 });

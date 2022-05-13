@@ -129,7 +129,7 @@ const ProductName = () => {
 
       {generatedTextState.name.length > 0 &&
         generatedTextState.name.map((name: NameState) => (
-          <ProductNameList name={name} />
+          <ProductNameList key={name.id} name={name} />
         ))}
     </ProductNameDiv>
   );

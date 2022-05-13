@@ -20,7 +20,7 @@ const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
         <span>Result:</span>
 
         {name.generatedText.map((word) => (
-          <div>
+          <div key={word}>
             <p>{word}</p>
             <SelectButton
               bColor={"blue"}

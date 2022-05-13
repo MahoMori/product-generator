@@ -92,7 +92,7 @@ const ProductAd = () => {
 
       {generatedTextState.ad.length > 0 &&
         generatedTextState.ad.map((ad: ObjectString) => (
-          <ProductAdList ad={ad} />
+          <ProductAdList key={ad.id} ad={ad} />
         ))}
     </ProductAdDiv>
   );
