@@ -78,12 +78,10 @@ const ProductAd = () => {
 
       <HrLine />
 
-      <div>
-        {generatedTextState.ad.length > 0 &&
-          generatedTextState.ad.map((ad: ObjectString) => (
-            <ProductAdList ad={ad} />
-          ))}
-      </div>
+      {generatedTextState.ad.length > 0 &&
+        generatedTextState.ad.map((ad: ObjectString) => (
+          <ProductAdList ad={ad} />
+        ))}
     </ProductAdDiv>
   );
 };

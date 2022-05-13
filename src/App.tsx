@@ -1,15 +1,9 @@
-import React, { useState, useEffect, createContext } from "react";
-
-// ----- redux -----
-import { useDispatch, useSelector } from "react-redux";
-import { TStore } from "./redux/store";
-import { addGeneratedAd, addGeneratedName } from "./redux/generatedTextSlice";
+import React, { useState, createContext } from "react";
 
 // ----- interface -----
 import {
   ContextLeftValue,
   ContextUserSelected,
-  JsonObject,
   ObjectString,
 } from "./assets/interface";
 
@@ -21,7 +15,6 @@ import SharePanel from "./components/share-panel/SharePanel";
 
 // ----- styled-components -----
 import { Header, Main, PanelParentDiv, RightPanelSection } from "./App.style";
-import { Section } from "./assets/style/styleVariables";
 
 // ----- useContext -----
 export const UserSelected = React.createContext<ContextUserSelected>(
@@ -33,9 +26,6 @@ export const LeftValue = React.createContext<ContextLeftValue>(
 );
 
 function App() {
-  const dispatch = useDispatch();
-  // const generatedTextState = useSelector((state: TStore) => state);
-
   const [userSelected, setUserSelected] = useState<ObjectString>({
     ad: "",
     name: "",
