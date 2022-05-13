@@ -20,6 +20,18 @@ export const SeedWordsStyle = styled.div`
     font-family: "Noto Sans JP", sans-serif;
   }
 
+  & div {
+    position: relative;
+  }
+
+  & span {
+    color: #c41e3a;
+    font-size: 1.5rem;
+    position: absolute;
+    left: -0.8rem;
+    top: 0.2rem;
+  }
+
   & *:nth-child(3) {
     margin: 0.25rem 0;
   }

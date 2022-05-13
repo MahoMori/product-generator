@@ -19,6 +19,7 @@ const ProductName = () => {
 
   const [descriptionInput, setDescriptionInput] = useState<string>("");
   const [seedWordsInput, setSeedWordsInput] = useState<string[]>(["", "", ""]);
+  const [loading, setIsLoading] = useState<boolean>(false);
 
   const productName = {
     prompt: `Product description: A home milkshake maker\nSeed words: fast, healthy, compact.\nProduct names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n\nProduct description: ${descriptionInput}\nSeed words: ${seedWordsInput.join(
@@ -36,6 +37,7 @@ const ProductName = () => {
     description: string,
     seedWords: string[]
   ) => {
+    setIsLoading(true);
     fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
       headers: {
@@ -59,6 +61,7 @@ const ProductName = () => {
             generatedText: nameArr,
           })
         );
+        setIsLoading(false);
       });
   };
 
@@ -82,14 +85,18 @@ const ProductName = () => {
 
         <SeedWordsStyle>
           <p>Seed words:</p>
-          <input
-            type="text"
-            placeholder="adaptable"
-            required
-            onChange={(e) =>
-              setSeedWordsInput((prev) => [e.target.value, prev[1], prev[2]])
-            }
-          />
+          <div>
+            <span>*</span>
+            <input
+              type="text"
+              placeholder="adaptable"
+              required
+              onChange={(e) =>
+                setSeedWordsInput((prev) => [e.target.value, prev[1], prev[2]])
+              }
+            />
+          </div>
+
           <input
             type="text"
             placeholder="fit"
@@ -105,7 +112,17 @@ const ProductName = () => {
             }
           ></input>
         </SeedWordsStyle>
-        <GenerateButton type="submit">Generate</GenerateButton>
+
+        <GenerateButton type="submit">
+          {loading ? (
+            <img
+              src={require("../../assets/images/loading-gif.gif")}
+              alt="loading"
+            />
+          ) : (
+            <>Generate</>
+          )}
+        </GenerateButton>
       </FormStyle>
 
       <HrLine />

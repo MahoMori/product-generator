@@ -23,6 +23,7 @@ const ProductAd = () => {
   const generatedTextState = useSelector((state: TStore) => state);
 
   const [detailInput, setDetailInput] = useState<string>("");
+  const [loading, setIsLoading] = useState<boolean>(false);
 
   const productAd = {
     prompt: `Write a creative ad for the following product:\n\nProduct: ${detailInput}`,
@@ -34,6 +35,7 @@ const ProductAd = () => {
   };
 
   const aiFetch = (jsonObject: JsonObject, originalText: string) => {
+    setIsLoading(true);
     fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
       headers: {
@@ -51,6 +53,7 @@ const ProductAd = () => {
             generatedText: data.choices[0].text,
           })
         );
+        setIsLoading(false);
       });
   };
 
@@ -73,7 +76,16 @@ const ProductAd = () => {
           ></textarea>
         </TextareaStyle>
 
-        <GenerateButton type="submit">Generate</GenerateButton>
+        <GenerateButton type="submit">
+          {loading ? (
+            <img
+              src={require("../../assets/images/loading-gif.gif")}
+              alt="loading"
+            />
+          ) : (
+            <>Generate</>
+          )}
+        </GenerateButton>
       </FormStyle>
 
       <HrLine />

@@ -42,6 +42,12 @@ export const TextareaStyle = styled.div`
     margin: 0 0 0.25rem -0.25rem;
   }
 
+  & p::before {
+    content: "*";
+    color: #c41e3a;
+    font-size: 1.5rem;
+  }
+
   & textarea {
     width: 100%;
     height: 10rem;
@@ -67,6 +73,10 @@ export const GenerateButton = styled.button`
   &:active {
     transform: translateY(4px);
     border-bottom: 1px solid #562913;
+  }
+
+  & img {
+    height: 2rem;
   }
 `;
 
