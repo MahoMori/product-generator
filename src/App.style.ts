@@ -42,16 +42,18 @@ export const RightPanelSection = styled(Section)`
   position: relative;
 
   @media ${device.tablet} {
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 `;
 
 export const PanelParentDiv = styled.div<{ leftValue: string; height: string }>`
   position: absolute;
   width: 100%;
-  height: ${(props) =>
-    parseInt(props.height) > 600 ? `${props.height}px` : "600px"};
-  overflow-y: ${(props) => (parseInt(props.height) > 600 ? "unset" : "clip")};
   left: ${(props) => (props.leftValue ? `${props.leftValue}%` : "0%")};
   transition: left 0.7s;
+
+  height: ${(props) =>
+    parseInt(props.height) > 600 ? `${props.height}px` : "100vh"};
+  overflow-y: ${(props) => (parseInt(props.height) > 600 ? "unset" : "clip")};
 `;

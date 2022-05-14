@@ -12,9 +12,13 @@ const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
   return (
     <ListDataCard>
       <ListDataDiv>
-        <span>Prompt:</span>
-        <p>{name.description}</p>
-        <p>{name.seedWords.join(", ")}</p>
+        <span>Prompt</span>
+        <p>
+          <i>Product description:</i> {name.description}
+        </p>
+        <p>
+          <i>Seed words:</i> {name.seedWords.join(", ")}
+        </p>
       </ListDataDiv>
       <ListDataDiv>
         <span>Result:</span>

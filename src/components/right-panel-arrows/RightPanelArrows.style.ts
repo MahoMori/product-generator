@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../assets/style/screenSize";
 
 export const ArrowsDiv = styled.div`
   display: flex;
@@ -20,7 +21,9 @@ export const ArrowsDiv = styled.div`
 export const PanelTitle = styled.div`
   border-bottom: solid 2px #000;
 
-  & p {
-    /* font-size: 1.2rem; */
+  @media ${device.laptop} {
+    & p {
+      font-size: 1.3rem;
+    }
   }
 `;

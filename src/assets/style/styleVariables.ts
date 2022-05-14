@@ -70,6 +70,10 @@ export const GenerateButton = styled.button`
   margin: 1rem auto;
   border-bottom: 5px solid #000;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &:active {
     transform: translateY(4px);
     border-bottom: 1px solid #562913;
@@ -133,6 +137,10 @@ export const ListDataDiv = styled.div`
   & p {
     margin: 0;
     padding: 0;
+  }
+
+  & i {
+    font-weight: bold;
   }
 `;
 

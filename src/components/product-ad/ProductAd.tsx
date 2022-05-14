@@ -43,7 +43,7 @@ const ProductAd: React.VFC<HeightProps> = ({
     presence_penalty: 0.0,
   };
 
-  const aiFetch = (jsonObject: JsonObject, originalText: string) => {
+  const aiAdFetch = (jsonObject: JsonObject, originalText: string) => {
     setIsLoading(true);
     fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
@@ -81,7 +81,7 @@ const ProductAd: React.VFC<HeightProps> = ({
       <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
-          aiFetch(productAd, detailInput);
+          aiAdFetch(productAd, detailInput);
         }}
       >
         <TextareaStyle>

@@ -40,7 +40,7 @@ const ProductName: React.VFC<HeightProps> = ({
     presence_penalty: 0.0,
   };
 
-  const aiFetch = (
+  const aiNameFetch = (
     jsonObject: JsonObject,
     description: string,
     seedWords: string[]
@@ -88,7 +88,7 @@ const ProductName: React.VFC<HeightProps> = ({
       <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
-          aiFetch(productName, descriptionInput, seedWordsInput);
+          aiNameFetch(productName, descriptionInput, seedWordsInput);
         }}
       >
         <TextareaStyle>
@@ -114,13 +114,18 @@ const ProductName: React.VFC<HeightProps> = ({
             />
           </div>
 
-          <input
-            type="text"
-            placeholder="fit"
-            onChange={(e) =>
-              setSeedWordsInput((prev) => [prev[0], e.target.value, prev[2]])
-            }
-          ></input>
+          <div>
+            <span>*</span>
+            <input
+              type="text"
+              placeholder="fit"
+              required
+              onChange={(e) =>
+                setSeedWordsInput((prev) => [prev[0], e.target.value, prev[2]])
+              }
+            ></input>
+          </div>
+
           <input
             type="text"
             placeholder="omni-fit"

@@ -13,11 +13,11 @@ const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
   return (
     <ListDataCard>
       <ListDataDiv>
-        <span>Prompt:</span>
+        <span>Prompt</span>
         <p>{ad.originalText}</p>
       </ListDataDiv>
       <ListDataDiv>
-        <span>Result:</span>
+        <span>Result</span>
         <p>{ad.generatedText}</p>
         <SelectButton
           bColor={"green"}
