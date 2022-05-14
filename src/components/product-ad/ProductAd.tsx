@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // ----- redux -----
 import { useDispatch, useSelector } from "react-redux";
@@ -17,10 +17,18 @@ import {
   GenerateButton,
   HrLine,
 } from "../../assets/style/styleVariables";
+import { LeftValue } from "../../App";
+import { HeightProps } from "../../assets/interface";
 
-const ProductAd = () => {
+const ProductAd: React.VFC<HeightProps> = ({
+  height,
+  setHeight,
+  getHeight,
+}) => {
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
+
+  const { leftValue } = useContext(LeftValue);
 
   const [detailInput, setDetailInput] = useState<string>("");
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -54,11 +62,21 @@ const ProductAd = () => {
           })
         );
         setIsLoading(false);
-      });
+      })
+      .then(() => setHeight(getHeight("product-ad-div") as string));
   };
 
+  useEffect(() => {
+    if (leftValue === "0" && generatedTextState.ad.length > 0) {
+      setHeight(getHeight("product-ad-div") as string);
+      console.log(height);
+    }
+    if (leftValue === "0" && generatedTextState.ad.length === 0)
+      setHeight("600");
+  }, [leftValue]);
+
   return (
-    <ProductAdDiv>
+    <ProductAdDiv id="product-ad-div">
       <RightPanelArrows panelTitle={"Generate Product Ad"} />
 
       <FormStyle

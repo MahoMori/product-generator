@@ -58,3 +58,9 @@ export interface ContextLeftValue {
   leftValue: string;
   setLeftValue: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface HeightProps {
+  height: string;
+  setHeight: React.Dispatch<React.SetStateAction<string>>;
+  getHeight: (idName: string) => string | undefined;
+}

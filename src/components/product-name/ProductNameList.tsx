@@ -8,7 +8,7 @@ import {
 } from "../../assets/style/styleVariables";
 
 const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
-  const { setUserSelected } = useContext(UserSelected);
+  const { userSelected, setUserSelected } = useContext(UserSelected);
   return (
     <ListDataCard>
       <ListDataDiv>
@@ -31,8 +31,9 @@ const ProductNameList: React.VFC<NameListComponentProp> = ({ name }) => {
                   name: word,
                 }));
               }}
+              disabled={userSelected.name === word ? true : false}
             >
-              Select
+              {userSelected.name === word ? "Selected" : "Select"}
             </SelectButton>
           </div>
         ))}

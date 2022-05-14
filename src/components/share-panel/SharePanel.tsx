@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -9,16 +9,25 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import { UserSelected } from "../../App";
+import { LeftValue, UserSelected } from "../../App";
+import { HeightProps } from "../../assets/interface";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 import { SharePanelDiv, ShareContainer } from "./SharePanel.style";
 
-const SharePanel = () => {
+const SharePanel: React.VFC<HeightProps> = ({ setHeight }) => {
   const { userSelected } = useContext(UserSelected);
+
+  const { leftValue } = useContext(LeftValue);
 
   const shareUrl = "https://product-generator.netlify.app/";
   const context = `I am hereby to present a new product, ${userSelected.name}! ${userSelected.ad} (generated with Product Generator)`;
   const contextTwitter = `${userSelected.name} - ${userSelected.ad} (generated with Product Generator)`;
+
+  useEffect(() => {
+    if (leftValue === "-200") {
+      setHeight("600");
+    }
+  }, [leftValue]);
 
   return (
     <SharePanelDiv>

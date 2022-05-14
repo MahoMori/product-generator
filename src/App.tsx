@@ -32,6 +32,12 @@ function App() {
   });
 
   const [leftValue, setLeftValue] = useState<string>("0");
+  const [height, setHeight] = useState<string>("600");
+  const getHeight = (idName: string) => {
+    let element = document.getElementById(idName);
+    if (element) return element.clientHeight.toString();
+    console.log("reached");
+  };
 
   return (
     <div className="App">
@@ -45,11 +51,23 @@ function App() {
 
           <LeftValue.Provider value={{ leftValue, setLeftValue }}>
             <RightPanelSection>
-              <PanelParentDiv leftValue={leftValue}>
+              <PanelParentDiv leftValue={leftValue} height={height}>
                 {/* components */}
-                <ProductAd />
-                <ProductName />
-                <SharePanel />
+                <ProductAd
+                  height={height}
+                  setHeight={setHeight}
+                  getHeight={getHeight}
+                />
+                <ProductName
+                  height={height}
+                  setHeight={setHeight}
+                  getHeight={getHeight}
+                />
+                <SharePanel
+                  height={height}
+                  setHeight={setHeight}
+                  getHeight={getHeight}
+                />
                 {/* components */}
               </PanelParentDiv>
             </RightPanelSection>

@@ -8,7 +8,7 @@ import {
 } from "../../assets/style/styleVariables";
 
 const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
-  const { setUserSelected } = useContext(UserSelected);
+  const { userSelected, setUserSelected } = useContext(UserSelected);
 
   return (
     <ListDataCard>
@@ -28,8 +28,9 @@ const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
               name: prev.name,
             }));
           }}
+          disabled={userSelected.ad === ad.generatedText ? true : false}
         >
-          Select
+          {userSelected.ad === ad.generatedText ? "Selected" : "Select"}
         </SelectButton>
       </ListDataDiv>
     </ListDataCard>

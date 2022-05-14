@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { JsonObject, NameState } from "../../assets/interface";
+import { HeightProps, JsonObject, NameState } from "../../assets/interface";
 import { TStore } from "../../redux/store";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 import { ProductNameDiv, SeedWordsStyle } from "./ProductName.style";
@@ -12,10 +12,17 @@ import {
   GenerateButton,
   HrLine,
 } from "../../assets/style/styleVariables";
+import { LeftValue } from "../../App";
 
-const ProductName = () => {
+const ProductName: React.VFC<HeightProps> = ({
+  height,
+  setHeight,
+  getHeight,
+}) => {
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
+
+  const { leftValue } = useContext(LeftValue);
 
   const [descriptionInput, setDescriptionInput] = useState<string>("");
   const [seedWordsInput, setSeedWordsInput] = useState<string[]>(["", "", ""]);
@@ -62,11 +69,22 @@ const ProductName = () => {
           })
         );
         setIsLoading(false);
-      });
+      })
+      .then(() => setHeight(getHeight("product-name-div") as string));
   };
 
+  useEffect(() => {
+    if (leftValue === "-100" && generatedTextState.name.length > 0) {
+      setHeight(getHeight("product-name-div") as string);
+      console.log(height);
+    }
+
+    if (leftValue === "-100" && generatedTextState.name.length === 0)
+      setHeight("600");
+  }, [leftValue]);
+
   return (
-    <ProductNameDiv>
+    <ProductNameDiv id="product-name-div">
       <RightPanelArrows panelTitle={"Generate Product Name"} />
       <FormStyle
         onSubmit={(e) => {

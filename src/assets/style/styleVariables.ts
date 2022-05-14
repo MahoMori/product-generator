@@ -24,7 +24,7 @@ export const RightPanelStyle = styled.div`
   position: absolute;
   padding: 1.5rem;
   width: 100%;
-  min-height: 160%;
+  min-height: 100%;
 
   @media ${device.tablet} {
     box-shadow: 0px 1px 10px -2px rgba(133, 133, 133, 0.55) inset;
