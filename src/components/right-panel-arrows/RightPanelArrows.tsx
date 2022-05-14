@@ -13,7 +13,6 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
       <button
         onClick={() => {
           setLeftValue((prev) => (parseInt(prev) + 100).toString());
-          console.log(leftValue);
         }}
         disabled={leftValue === "0" ? true : false}
       >
@@ -27,7 +26,6 @@ const RightPanelArrows = ({ panelTitle }: ObjectString) => {
       <button
         onClick={() => {
           setLeftValue((prev) => (parseInt(prev) - 100).toString());
-          console.log(leftValue);
         }}
         disabled={leftValue === "-200" ? true : false}
       >

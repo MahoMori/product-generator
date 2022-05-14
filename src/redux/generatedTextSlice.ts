@@ -3,8 +3,8 @@ import { v4 as uuid } from "uuid";
 
 import {
   GeneratedTextState,
-  ObjectString,
   AddNamePayload,
+  AddAdPayload,
 } from "../assets/interface";
 
 const initialState: GeneratedTextState = {
@@ -16,7 +16,7 @@ export const generatedTextSlice = createSlice({
   name: "generatedTextSlice",
   initialState,
   reducers: {
-    addGeneratedAd: (state, action: PayloadAction<ObjectString>) => {
+    addGeneratedAd: (state, action: PayloadAction<AddAdPayload>) => {
       const { originalText, generatedText } = action.payload;
       state.ad.unshift({ id: uuid(), originalText, generatedText });
     },

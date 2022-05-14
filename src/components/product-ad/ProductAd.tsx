@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TStore } from "../../redux/store";
 
 // ----- interface -----
-import { JsonObject, ObjectString } from "../../assets/interface";
+import { JsonObject, AdState } from "../../assets/interface";
 import ProductAdList from "./ProductAdList";
 
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
@@ -16,6 +16,7 @@ import {
   TextareaStyle,
   GenerateButton,
   HrLine,
+  NoDataText,
 } from "../../assets/style/styleVariables";
 import { LeftValue } from "../../App";
 import { HeightProps } from "../../assets/interface";
@@ -54,7 +55,6 @@ const ProductAd: React.VFC<HeightProps> = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.choices[0].text);
         dispatch(
           addGeneratedAd({
             originalText,
@@ -69,7 +69,6 @@ const ProductAd: React.VFC<HeightProps> = ({
   useEffect(() => {
     if (leftValue === "0" && generatedTextState.ad.length > 0) {
       setHeight(getHeight("product-ad-div") as string);
-      console.log(height);
     }
     if (leftValue === "0" && generatedTextState.ad.length === 0)
       setHeight("600");
@@ -108,10 +107,15 @@ const ProductAd: React.VFC<HeightProps> = ({
 
       <HrLine />
 
-      {generatedTextState.ad.length > 0 &&
-        generatedTextState.ad.map((ad: ObjectString) => (
-          <ProductAdList key={ad.id} ad={ad} />
-        ))}
+      {generatedTextState.ad.length > 0 && (
+        <>
+          {generatedTextState.ad.map((ad: AdState) => (
+            <ProductAdList key={ad.id} ad={ad} />
+          ))}
+          <HrLine />
+          <NoDataText>No data below this😣</NoDataText>
+        </>
+      )}
     </ProductAdDiv>
   );
 };

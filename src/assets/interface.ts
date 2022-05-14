@@ -6,6 +6,14 @@ export interface ObjectString {
 //   context: string;
 //   selected: boolean;
 // }
+export interface AddAdPayload {
+  originalText: string;
+  generatedText: string;
+}
+
+export interface AdState extends AddAdPayload {
+  id: string;
+}
 
 export interface AddNamePayload {
   description: string;
@@ -18,7 +26,7 @@ export interface NameState extends AddNamePayload {
 }
 
 export interface GeneratedTextState {
-  ad: ObjectString[];
+  ad: AdState[];
   name: NameState[];
 }
 
@@ -31,27 +39,22 @@ export interface JsonObject {
   presence_penalty: number;
 }
 
-// export interface FetchComponentProp {
-//   aiFetch: (
-//     jsonObject: JsonObject,
-//     originalText: string,
-//     kw: string,
-//     description?: string | undefined,
-//     seedWords?: string[] | undefined
-//   ) => void;
-// }
-
 export interface AdListComponentProp {
-  ad: ObjectString;
+  ad: AdState;
 }
 
 export interface NameListComponentProp {
   name: NameState;
 }
 
+export interface UserSelectedTypes {
+  ad: string;
+  name: string;
+}
+
 export interface ContextUserSelected {
-  userSelected: ObjectString;
-  setUserSelected: React.Dispatch<React.SetStateAction<ObjectString>>;
+  userSelected: UserSelectedTypes;
+  setUserSelected: React.Dispatch<React.SetStateAction<UserSelectedTypes>>;
 }
 
 export interface ContextLeftValue {

@@ -147,3 +147,13 @@ export const SelectButton = styled.button<{ bColor: string }>`
   width: 8rem;
   height: 2.25rem;
 `;
+
+export const NoDataText = styled.p`
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+
+  @media ${device.tablet} {
+    display: "none";
+  }
+`;

@@ -11,6 +11,7 @@ import {
   TextareaStyle,
   GenerateButton,
   HrLine,
+  NoDataText,
 } from "../../assets/style/styleVariables";
 import { LeftValue } from "../../App";
 
@@ -55,7 +56,6 @@ const ProductName: React.VFC<HeightProps> = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.choices[0].text);
         const text: string = data.choices[0].text;
         const nameArr: string[] = text
           .substring(text.indexOf(":") + 2)
@@ -76,7 +76,6 @@ const ProductName: React.VFC<HeightProps> = ({
   useEffect(() => {
     if (leftValue === "-100" && generatedTextState.name.length > 0) {
       setHeight(getHeight("product-name-div") as string);
-      console.log(height);
     }
 
     if (leftValue === "-100" && generatedTextState.name.length === 0)
@@ -145,10 +144,16 @@ const ProductName: React.VFC<HeightProps> = ({
 
       <HrLine />
 
-      {generatedTextState.name.length > 0 &&
-        generatedTextState.name.map((name: NameState) => (
-          <ProductNameList key={name.id} name={name} />
-        ))}
+      {generatedTextState.name.length > 0 && (
+        <>
+          {generatedTextState.name.map((name: NameState) => (
+            <ProductNameList key={name.id} name={name} />
+          ))}
+
+          <HrLine />
+          <NoDataText>No data below this😣</NoDataText>
+        </>
+      )}
     </ProductNameDiv>
   );
 };

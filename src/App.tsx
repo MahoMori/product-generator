@@ -3,8 +3,8 @@ import React, { useState, createContext } from "react";
 // ----- interface -----
 import {
   ContextLeftValue,
+  UserSelectedTypes,
   ContextUserSelected,
-  ObjectString,
 } from "./assets/interface";
 
 // ----- components -----
@@ -26,7 +26,7 @@ export const LeftValue = React.createContext<ContextLeftValue>(
 );
 
 function App() {
-  const [userSelected, setUserSelected] = useState<ObjectString>({
+  const [userSelected, setUserSelected] = useState<UserSelectedTypes>({
     ad: "",
     name: "",
   });
@@ -36,7 +36,6 @@ function App() {
   const getHeight = (idName: string) => {
     let element = document.getElementById(idName);
     if (element) return element.clientHeight.toString();
-    console.log("reached");
   };
 
   return (
