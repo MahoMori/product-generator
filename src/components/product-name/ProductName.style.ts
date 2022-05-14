@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../assets/style/screenSize";
 import { color, RightPanelStyle } from "../../assets/style/styleVariables";
 
 export const ProductNameDiv = styled(RightPanelStyle)`
@@ -34,5 +35,19 @@ export const SeedWordsStyle = styled.div`
 
   & *:nth-child(3) {
     margin: 0.25rem 0;
+  }
+  @media ${device.desktop} {
+    & p {
+      font-size: 1.5rem;
+    }
+
+    & span {
+      font-size: 1.75rem;
+    }
+
+    & input {
+      height: 2.25rem;
+      font-size: 1.2rem;
+    }
   }
 `;

@@ -33,7 +33,6 @@ export const RightPanelStyle = styled.div`
 
 // ----- form style -----
 export const FormStyle = styled.form`
-  /* width: 100%; */
   padding: 1rem 0;
 `;
 
@@ -56,6 +55,20 @@ export const TextareaStyle = styled.div`
     padding: 0.25rem;
     font-family: "Noto Sans JP", sans-serif;
     resize: vertical;
+  }
+
+  @media ${device.desktop} {
+    & p {
+      font-size: 1.5rem;
+    }
+
+    & p::before {
+      font-size: 1.75rem;
+    }
+
+    & textarea {
+      font-size: 1.2rem;
+    }
   }
 `;
 
@@ -81,6 +94,10 @@ export const GenerateButton = styled.button`
 
   & img {
     height: 2rem;
+  }
+
+  @media ${device.desktop} {
+    font-size: 1.2rem;
   }
 `;
 
@@ -142,6 +159,10 @@ export const ListDataDiv = styled.div`
   & i {
     font-weight: bold;
   }
+
+  @media ${device.desktop} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const SelectButton = styled.button<{ bColor: string }>`
@@ -154,6 +175,10 @@ export const SelectButton = styled.button<{ bColor: string }>`
   padding: 0.25rem 1rem;
   width: 8rem;
   height: 2.25rem;
+
+  @media ${device.desktop} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const NoDataText = styled.p`
@@ -163,5 +188,9 @@ export const NoDataText = styled.p`
 
   @media ${device.tablet} {
     display: "none";
+  }
+
+  @media ${device.desktop} {
+    font-size: 1.2rem;
   }
 `;

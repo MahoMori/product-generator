@@ -51,4 +51,30 @@ export const PreviewCard = styled.div`
     width: 95%;
     height: 50%;
   }
+
+  @media ${device.laptopL} {
+    width: 95%;
+    height: 40%;
+
+    & p:first-child {
+      font-size: 1.75rem;
+    }
+
+    & p:last-child {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media ${device.desktop} {
+    width: 95%;
+    height: 35%;
+
+    & p:first-child {
+      font-size: 2rem;
+    }
+
+    & p:last-child {
+      font-size: 1.75rem;
+    }
+  }
 `;

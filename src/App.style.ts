@@ -15,12 +15,18 @@ export const Header = styled.header`
 
   text-align: center;
 
+  & h1 {
+    font-family: "MuseoModerno", cursive;
+  }
+
   @media ${device.tablet} {
     height: 7vh;
   }
 
-  & h1 {
-    font-family: "MuseoModerno", cursive;
+  @media ${device.desktop} {
+    & h1 {
+      font-size: 3.5em;
+    }
   }
 `;
 

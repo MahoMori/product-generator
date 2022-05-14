@@ -8,10 +8,15 @@ export const SharePanelDiv = styled(RightPanelStyle)`
 `;
 
 export const ShareContainer = styled.div`
-  width: 100%;
+  width: 90%;
   height: auto;
   margin: 1rem 0;
   padding: 1rem 0;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   background-color: #fff;
 

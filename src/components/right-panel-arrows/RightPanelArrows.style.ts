@@ -26,4 +26,10 @@ export const PanelTitle = styled.div`
       font-size: 1.3rem;
     }
   }
+
+  @media ${device.desktop} {
+    & p {
+      font-size: 1.7rem;
+    }
+  }
 `;
