@@ -57,7 +57,7 @@ export interface HeightProps {
   setLeftValue: React.Dispatch<React.SetStateAction<string>>;
   height: string;
   setHeight: React.Dispatch<React.SetStateAction<string>>;
-  getHeight: (idName: string) => string | undefined;
+  getHeight: (idName: string) => number | undefined;
 }
 
 // panel title and height to right panle arrow

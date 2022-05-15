@@ -29,7 +29,7 @@ function App() {
   const [height, setHeight] = useState<string>("600");
   const getHeight = (idName: string) => {
     let element = document.getElementById(idName);
-    if (element) return element.clientHeight.toString();
+    if (element) return element.clientHeight;
   };
 
   return (

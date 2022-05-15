@@ -49,12 +49,12 @@ export const PreviewCard = styled.div`
 
   @media ${device.laptop} {
     width: 95%;
-    height: 50%;
+    height: 60%;
   }
 
   @media ${device.laptopL} {
     width: 95%;
-    height: 40%;
+    height: 50%;
 
     & p:first-child {
       font-size: 1.75rem;

@@ -69,13 +69,19 @@ const ProductAd: React.VFC<HeightProps> = ({
         );
         setIsLoading(false);
       })
-      .then(() => setHeight(getHeight("product-ad-div") as string));
+      .then(() => {
+        const adDivHeight = getHeight("product-ad-div") as number;
+        const nameDivHeight = getHeight("product-name-div") as number;
+
+        setHeight(Math.max(adDivHeight, nameDivHeight).toString());
+      });
   };
 
   useEffect(() => {
     // if the app is showing ProductAd component and generated ad exists
     if (leftValue === "0" && generatedTextState.ad.length > 0) {
-      setHeight(getHeight("product-ad-div") as string);
+      const heightValue = getHeight("product-name-div") as number;
+      setHeight(heightValue.toString());
     }
 
     // if the app is showing ProductAd component and generated ad does not exist
