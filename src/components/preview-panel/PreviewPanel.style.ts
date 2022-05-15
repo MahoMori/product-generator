@@ -17,7 +17,7 @@ export const PreviewPanelDiv = styled.div`
     0px 1px 10px -2px rgba(133, 133, 133, 0.55) inset;
 
   @media ${device.tablet} {
-    box-shadow: -5px 1px 5px -2px rgba(133, 133, 133, 0.3) inset;
+    box-shadow: 0px 1px 10px -2px rgba(133, 133, 133, 0.55) inset;
   }
 `;
 
