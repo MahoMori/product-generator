@@ -1,11 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+
+// ----- redux -----
 import { useDispatch, useSelector } from "react-redux";
-import { HeightProps, JsonObject, NameState } from "../../assets/interface";
 import { TStore } from "../../redux/store";
-import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
-import { ProductNameDiv, SeedWordsStyle } from "./ProductName.style";
-import ProductNameList from "./ProductNameList";
 import { addGeneratedName } from "../../redux/generatedTextSlice";
+
+// ----- interface -----
+import { HeightProps, JsonObject, NameState } from "../../assets/interface";
+
+// ----- components -----
+import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
+import ProductNameList from "./ProductNameList";
+
+// ----- styled-components -----
+import { ProductNameDiv, SeedWordsStyle } from "./ProductName.style";
 import {
   FormStyle,
   TextareaStyle,
@@ -13,23 +21,26 @@ import {
   HrLine,
   NoDataText,
 } from "../../assets/style/styleVariables";
-import { LeftValue } from "../../App";
 
 const ProductName: React.VFC<HeightProps> = ({
+  leftValue,
+  setLeftValue,
   height,
   setHeight,
   getHeight,
 }) => {
+  // redux
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
 
-  const { leftValue } = useContext(LeftValue);
-
+  // useState for inputs
   const [descriptionInput, setDescriptionInput] = useState<string>("");
   const [seedWordsInput, setSeedWordsInput] = useState<string[]>(["", "", ""]);
+
   const [loading, setIsLoading] = useState<boolean>(false);
 
-  const productName = {
+  // ----- fetch API -----
+  const productName: JsonObject = {
     prompt: `Product description: A home milkshake maker\nSeed words: fast, healthy, compact.\nProduct names: HomeShaker, Fit Shaker, QuickShake, Shake Maker\n\nProduct description: ${descriptionInput}\nSeed words: ${seedWordsInput.join(
       ", "
     )}.`,
@@ -74,17 +85,23 @@ const ProductName: React.VFC<HeightProps> = ({
   };
 
   useEffect(() => {
+    // if the app is showing ProductName component and generated name exists
     if (leftValue === "-100" && generatedTextState.name.length > 0) {
       setHeight(getHeight("product-name-div") as string);
     }
 
+    // if the app is showing ProductName component and generated name does not exist
     if (leftValue === "-100" && generatedTextState.name.length === 0)
       setHeight("600");
   }, [leftValue]);
 
   return (
     <ProductNameDiv id="product-name-div">
-      <RightPanelArrows panelTitle={"Generate Product Name"} />
+      <RightPanelArrows
+        panelTitle={"Generate Product Name"}
+        leftValue={leftValue}
+        setLeftValue={setLeftValue}
+      />
       <FormStyle
         onSubmit={(e) => {
           e.preventDefault();

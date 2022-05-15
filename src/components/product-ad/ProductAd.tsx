@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // ----- redux -----
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +12,6 @@ import { JsonObject, AdState } from "../../assets/interface";
 import ProductAdList from "./ProductAdList";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
 
-// ----- createContext for left value -----
-import { LeftValue } from "../../App";
-
 // ----- styled-components -----
 import { ProductAdDiv } from "./ProductAd.style";
 import {
@@ -27,19 +24,23 @@ import {
 import { HeightProps } from "../../assets/interface";
 
 const ProductAd: React.VFC<HeightProps> = ({
+  leftValue,
+  setLeftValue,
   height,
   setHeight,
   getHeight,
 }) => {
+  // redux
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
 
-  const { leftValue } = useContext(LeftValue);
-
+  // useState for inputs
   const [detailInput, setDetailInput] = useState<string>("");
+
   const [loading, setIsLoading] = useState<boolean>(false);
 
-  const productAd = {
+  // ----- fetch API -----
+  const productAd: JsonObject = {
     prompt: `Write a creative ad for the following product:\n\nProduct: ${detailInput}`,
     temperature: 0.5,
     max_tokens: 60,
@@ -72,16 +73,23 @@ const ProductAd: React.VFC<HeightProps> = ({
   };
 
   useEffect(() => {
+    // if the app is showing ProductAd component and generated ad exists
     if (leftValue === "0" && generatedTextState.ad.length > 0) {
       setHeight(getHeight("product-ad-div") as string);
     }
+
+    // if the app is showing ProductAd component and generated ad does not exist
     if (leftValue === "0" && generatedTextState.ad.length === 0)
       setHeight("600");
   }, [leftValue]);
 
   return (
     <ProductAdDiv id="product-ad-div">
-      <RightPanelArrows panelTitle={"Generate Product Ad"} />
+      <RightPanelArrows
+        panelTitle={"Generate Product Ad"}
+        leftValue={leftValue}
+        setLeftValue={setLeftValue}
+      />
 
       <FormStyle
         onSubmit={(e) => {

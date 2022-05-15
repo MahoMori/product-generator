@@ -1,11 +1,7 @@
 import React, { useState, createContext } from "react";
 
 // ----- interface -----
-import {
-  ContextLeftValue,
-  UserSelectedTypes,
-  ContextUserSelected,
-} from "./assets/interface";
+import { UserSelectedTypes, ContextUserSelected } from "./assets/interface";
 
 // ----- components -----
 import PreviewPanel from "./components/preview-panel/PreviewPanel";
@@ -19,10 +15,6 @@ import { Header, Main, PanelParentDiv, RightPanelSection } from "./App.style";
 // ----- createContext -----
 export const UserSelected = React.createContext<ContextUserSelected>(
   {} as ContextUserSelected
-);
-
-export const LeftValue = React.createContext<ContextLeftValue>(
-  {} as ContextLeftValue
 );
 
 function App() {
@@ -50,29 +42,33 @@ function App() {
         <UserSelected.Provider value={{ userSelected, setUserSelected }}>
           <PreviewPanel />
 
-          <LeftValue.Provider value={{ leftValue, setLeftValue }}>
-            <RightPanelSection>
-              <PanelParentDiv leftValue={leftValue} height={height}>
-                {/* components from here */}
-                <ProductAd
-                  height={height}
-                  setHeight={setHeight}
-                  getHeight={getHeight}
-                />
-                <ProductName
-                  height={height}
-                  setHeight={setHeight}
-                  getHeight={getHeight}
-                />
-                <SharePanel
-                  height={height}
-                  setHeight={setHeight}
-                  getHeight={getHeight}
-                />
-                {/* components up to here */}
-              </PanelParentDiv>
-            </RightPanelSection>
-          </LeftValue.Provider>
+          <RightPanelSection>
+            <PanelParentDiv leftValue={leftValue} height={height}>
+              {/* components from here */}
+              <ProductAd
+                leftValue={leftValue}
+                setLeftValue={setLeftValue}
+                height={height}
+                setHeight={setHeight}
+                getHeight={getHeight}
+              />
+              <ProductName
+                leftValue={leftValue}
+                setLeftValue={setLeftValue}
+                height={height}
+                setHeight={setHeight}
+                getHeight={getHeight}
+              />
+              <SharePanel
+                leftValue={leftValue}
+                setLeftValue={setLeftValue}
+                height={height}
+                setHeight={setHeight}
+                getHeight={getHeight}
+              />
+              {/* components up to here */}
+            </PanelParentDiv>
+          </RightPanelSection>
         </UserSelected.Provider>
       </Main>
     </div>

@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
+
+// ----- context for user selected text -----
 import { UserSelected } from "../../App";
-import { AdListComponentProp } from "../../assets/interface";
+
+// ----- interface -----
+import { AdListComponentProps } from "../../assets/interface";
+
+// ----- styled-components -----
 import {
   ListDataCard,
   ListDataDiv,
   SelectButton,
 } from "../../assets/style/styleVariables";
 
-const ProductAdList: React.VFC<AdListComponentProp> = ({ ad }) => {
+const ProductAdList: React.VFC<AdListComponentProps> = ({ ad }) => {
   const { userSelected, setUserSelected } = useContext(UserSelected);
 
   return (

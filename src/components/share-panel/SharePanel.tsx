@@ -1,4 +1,18 @@
 import React, { useContext, useEffect } from "react";
+
+// ----- interface -----
+import { HeightProps } from "../../assets/interface";
+
+// ----- context for user selected text -----
+import { UserSelected } from "../../App";
+
+// ----- components -----
+import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
+
+// ----- styled-components -----
+import { SharePanelDiv, ShareContainer } from "./SharePanel.style";
+
+// ----- react share -----
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -9,21 +23,21 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import { LeftValue, UserSelected } from "../../App";
-import { HeightProps } from "../../assets/interface";
-import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
-import { SharePanelDiv, ShareContainer } from "./SharePanel.style";
 
-const SharePanel: React.VFC<HeightProps> = ({ setHeight }) => {
+const SharePanel: React.VFC<HeightProps> = ({
+  setHeight,
+  leftValue,
+  setLeftValue,
+}) => {
   const { userSelected } = useContext(UserSelected);
 
-  const { leftValue } = useContext(LeftValue);
-
+  // react share props
   const shareUrl = "https://product-generator.netlify.app/";
   const context = `I am hereby to present a new product, ${userSelected.name}! ${userSelected.ad} (generated with Product Generator)`;
   const contextTwitter = `${userSelected.name} - ${userSelected.ad} (generated with Product Generator)`;
 
   useEffect(() => {
+    // if the app is showing ProductAd component, always set it to "600"
     if (leftValue === "-200") {
       setHeight("600");
     }
@@ -31,7 +45,11 @@ const SharePanel: React.VFC<HeightProps> = ({ setHeight }) => {
 
   return (
     <SharePanelDiv>
-      <RightPanelArrows panelTitle={"Share your product!"} />
+      <RightPanelArrows
+        panelTitle={"Share your product!"}
+        leftValue={leftValue}
+        setLeftValue={setLeftValue}
+      />
 
       <ShareContainer>
         <img

@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
+
+// ----- context for user selected text -----
 import { UserSelected } from "../../App";
+
+// ----- interface -----
 import { NameListComponentProp } from "../../assets/interface";
+
+// ----- styled-components -----
 import {
   ListDataCard,
   ListDataDiv,

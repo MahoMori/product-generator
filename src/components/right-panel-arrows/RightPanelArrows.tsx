@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
-import { LeftValue } from "../../App";
-import { ObjectString } from "../../assets/interface";
+// ----- interface -----
+import { RightPanelArrowProps } from "../../assets/interface";
+
+// ----- styled-components -----
 import { ArrowsDiv, PanelTitle } from "./RightPanelArrows.style";
 
-const RightPanelArrows = ({ panelTitle }: ObjectString) => {
-  const { leftValue, setLeftValue } = useContext(LeftValue);
+// ----- react icons -----
+import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
+const RightPanelArrows = ({
+  panelTitle,
+  leftValue,
+  setLeftValue,
+}: RightPanelArrowProps) => {
   return (
     <ArrowsDiv>
       <button

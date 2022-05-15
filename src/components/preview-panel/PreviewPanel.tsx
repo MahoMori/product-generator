@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-// ----- createContext for user selected text -----
+// ----- context for user selected text -----
 import { UserSelected } from "../../App";
 
 // ----- styled-components -----

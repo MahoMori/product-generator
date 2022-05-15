@@ -42,7 +42,7 @@ export interface JsonObject {
 
 // ----- component props ------
 // ad to list component
-export interface AdListComponentProp {
+export interface AdListComponentProps {
   ad: AdState;
 }
 
@@ -53,9 +53,18 @@ export interface NameListComponentProp {
 
 // height to right panel (ad, name, share)
 export interface HeightProps {
+  leftValue: string;
+  setLeftValue: React.Dispatch<React.SetStateAction<string>>;
   height: string;
   setHeight: React.Dispatch<React.SetStateAction<string>>;
   getHeight: (idName: string) => string | undefined;
+}
+
+// panel title and height to right panle arrow
+export interface RightPanelArrowProps {
+  panelTitle: string;
+  leftValue: string;
+  setLeftValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // ----- useState userSelected ad and string types -----
@@ -69,10 +78,4 @@ export interface UserSelectedTypes {
 export interface ContextUserSelected {
   userSelected: UserSelectedTypes;
   setUserSelected: React.Dispatch<React.SetStateAction<UserSelectedTypes>>;
-}
-
-// leftValue
-export interface ContextLeftValue {
-  leftValue: string;
-  setLeftValue: React.Dispatch<React.SetStateAction<string>>;
 }
