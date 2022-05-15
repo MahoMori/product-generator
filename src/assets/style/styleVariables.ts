@@ -11,6 +11,7 @@ export const color: ObjectString = {
   brown: "#8B5D61ff",
 };
 
+// both left and right section base style
 export const Section = styled.section`
   width: 100%;
   height: 100%;
@@ -20,6 +21,7 @@ export const Section = styled.section`
   }
 `;
 
+// right panels (ProductAd, ProductName, SharePanel) base style
 export const RightPanelStyle = styled.div`
   position: absolute;
   padding: 1.5rem;
@@ -130,6 +132,7 @@ export const ListDataCard = styled.div`
   }
 `;
 
+// propmt and result displaying div style
 export const ListDataDiv = styled.div`
   position: relative;
   margin: 1em 0;

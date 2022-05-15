@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
+
+// ----- createContext for user selected text -----
 import { UserSelected } from "../../App";
+
+// ----- styled-components -----
 import { Section } from "../../assets/style/styleVariables";
 import { PreviewPanelDiv, PreviewCard } from "./PreviewPanel.style";
 

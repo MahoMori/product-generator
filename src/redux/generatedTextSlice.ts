@@ -25,6 +25,8 @@ export const generatedTextSlice = createSlice({
       const { description, generatedText } = action.payload;
       let seedWords = action.payload.seedWords;
 
+      // erase unwanted string
+      // ex.) ["easy", "fun", ""] -> ["easy", "fun"]
       const seedWordsArr = (seedWords: string[]): string[] => {
         let newArr = seedWords.filter((word) => {
           return word;

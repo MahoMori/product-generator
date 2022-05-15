@@ -2,15 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 
 // ----- redux -----
 import { useDispatch, useSelector } from "react-redux";
+import { addGeneratedAd } from "../../redux/generatedTextSlice";
 import { TStore } from "../../redux/store";
 
 // ----- interface -----
 import { JsonObject, AdState } from "../../assets/interface";
-import ProductAdList from "./ProductAdList";
 
+// ----- components -----
+import ProductAdList from "./ProductAdList";
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
+
+// ----- createContext for left value -----
+import { LeftValue } from "../../App";
+
+// ----- styled-components -----
 import { ProductAdDiv } from "./ProductAd.style";
-import { addGeneratedAd } from "../../redux/generatedTextSlice";
 import {
   FormStyle,
   TextareaStyle,
@@ -18,7 +24,6 @@ import {
   HrLine,
   NoDataText,
 } from "../../assets/style/styleVariables";
-import { LeftValue } from "../../App";
 import { HeightProps } from "../../assets/interface";
 
 const ProductAd: React.VFC<HeightProps> = ({

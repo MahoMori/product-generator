@@ -16,7 +16,7 @@ import SharePanel from "./components/share-panel/SharePanel";
 // ----- styled-components -----
 import { Header, Main, PanelParentDiv, RightPanelSection } from "./App.style";
 
-// ----- useContext -----
+// ----- createContext -----
 export const UserSelected = React.createContext<ContextUserSelected>(
   {} as ContextUserSelected
 );
@@ -26,11 +26,13 @@ export const LeftValue = React.createContext<ContextLeftValue>(
 );
 
 function App() {
+  // user selected text
   const [userSelected, setUserSelected] = useState<UserSelectedTypes>({
     ad: "",
     name: "",
   });
 
+  // left value and height for styled components
   const [leftValue, setLeftValue] = useState<string>("0");
   const [height, setHeight] = useState<string>("600");
   const getHeight = (idName: string) => {
@@ -51,7 +53,7 @@ function App() {
           <LeftValue.Provider value={{ leftValue, setLeftValue }}>
             <RightPanelSection>
               <PanelParentDiv leftValue={leftValue} height={height}>
-                {/* components */}
+                {/* components from here */}
                 <ProductAd
                   height={height}
                   setHeight={setHeight}
@@ -67,7 +69,7 @@ function App() {
                   setHeight={setHeight}
                   getHeight={getHeight}
                 />
-                {/* components */}
+                {/* components up to here */}
               </PanelParentDiv>
             </RightPanelSection>
           </LeftValue.Provider>
