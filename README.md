@@ -1,24 +1,29 @@
 # Creative Product Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application generates a random product ad and product name by using
+[OpenAI API](https://beta.openai.com/overview). The user can generate ads and names multiplle times and choose one each.
 
 ## Live Link
 
-You can view and test this app [here]().
+You can view and test this application [here](https://product-generator.netlify.app/).
 
-## About the Project
+## Features
 
-This app generates a random product ad and product name by using
-[OpenAI API](https://beta.openai.com/overview). The user can generate ads and names multiplle times and choose one each.
-Also, the app has a feature to share the result on social media, messaging apps and email.
+The user may:
 
-<!-- ## How To Use -->
+- input description to generate product ads
+  - select one ad as the user's product
+- input description and seed words to generate product names
+  - select one name as the user's product
+- view the user's current product on the left side (at the top on mobile screens)
+- share the product on Facebook, Twitter, WhatsApp and email
 
 ## Technologies Used
 
 - React.js
+- Redux toolkit
 - TypeScript
-- [OpenAI API](https://beta.openai.com/overview)
+- OpenAI API
 - styled components
 - React Icons
 - React Share
@@ -29,7 +34,13 @@ Also, the app has a feature to share the result on social media, messaging apps 
 - [Pa-Tu](https://pa-tu.work/)
 - [Lottie Files](https://lottiefiles.com/)
 
+## Notes
+
+All components except for card, frame and button designs were developed from scratch.
+The application is responsive on mobile and tablet devices.
+
 ## Ideas for Future Improvements
 
 - uploading a picture
-- change height of each panel according to the contents inside
+- change height of each panel on the right according to the contents inside
+- keep user input of description to be able to reuse in both ad generator panel and name generator panel on the right
