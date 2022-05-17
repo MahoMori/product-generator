@@ -62,9 +62,7 @@ function App() {
               <SharePanel
                 leftValue={leftValue}
                 setLeftValue={setLeftValue}
-                height={height}
                 setHeight={setHeight}
-                getHeight={getHeight}
               />
               {/* components up to here */}
             </PanelParentDiv>

@@ -21,9 +21,9 @@ import {
   HrLine,
   NoDataText,
 } from "../../assets/style/styleVariables";
-import { HeightProps } from "../../assets/interface";
+import { AdNameComponentProps } from "../../assets/interface";
 
-const ProductAd: React.VFC<HeightProps> = ({
+const ProductAd: React.VFC<AdNameComponentProps> = ({
   leftValue,
   setLeftValue,
   height,

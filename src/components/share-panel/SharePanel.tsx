@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 // ----- interface -----
-import { HeightProps } from "../../assets/interface";
+import { ShareComponentProps } from "../../assets/interface";
 
 // ----- context for user selected text -----
 import { UserSelected } from "../../App";
@@ -24,10 +24,10 @@ import {
   WhatsappShareButton,
 } from "react-share";
 
-const SharePanel: React.VFC<HeightProps> = ({
-  setHeight,
+const SharePanel: React.VFC<ShareComponentProps> = ({
   leftValue,
   setLeftValue,
+  setHeight,
 }) => {
   const { userSelected } = useContext(UserSelected);
 

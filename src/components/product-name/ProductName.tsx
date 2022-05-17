@@ -6,7 +6,11 @@ import { TStore } from "../../redux/store";
 import { addGeneratedName } from "../../redux/generatedTextSlice";
 
 // ----- interface -----
-import { HeightProps, JsonObject, NameState } from "../../assets/interface";
+import {
+  AdNameComponentProps,
+  JsonObject,
+  NameState,
+} from "../../assets/interface";
 
 // ----- components -----
 import RightPanelArrows from "../right-panel-arrows/RightPanelArrows";
@@ -22,7 +26,7 @@ import {
   NoDataText,
 } from "../../assets/style/styleVariables";
 
-const ProductName: React.VFC<HeightProps> = ({
+const ProductName: React.VFC<AdNameComponentProps> = ({
   leftValue,
   setLeftValue,
   height,

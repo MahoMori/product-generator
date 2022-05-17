@@ -51,13 +51,20 @@ export interface NameListComponentProp {
   name: NameState;
 }
 
-// height to right panel (ad, name, share)
-export interface HeightProps {
+// left value and height to right panel (ad, name)
+export interface AdNameComponentProps {
   leftValue: string;
   setLeftValue: React.Dispatch<React.SetStateAction<string>>;
   height: string;
   setHeight: React.Dispatch<React.SetStateAction<string>>;
   getHeight: (idName: string) => number | undefined;
+}
+
+// left value and height to right panel (share)
+export interface ShareComponentProps {
+  leftValue: string;
+  setLeftValue: React.Dispatch<React.SetStateAction<string>>;
+  setHeight: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // panel title and height to right panle arrow
