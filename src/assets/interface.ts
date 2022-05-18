@@ -58,6 +58,8 @@ export interface AdNameComponentProps {
   height: string;
   setHeight: React.Dispatch<React.SetStateAction<string>>;
   getHeight: (idName: string) => number | undefined;
+  descriptionInput: string;
+  setDescriptionInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // left value and height to right panel (share)

@@ -29,19 +29,18 @@ const ProductAd: React.VFC<AdNameComponentProps> = ({
   height,
   setHeight,
   getHeight,
+  descriptionInput,
+  setDescriptionInput,
 }) => {
   // redux
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
 
-  // useState for inputs
-  const [detailInput, setDetailInput] = useState<string>("");
-
   const [loading, setIsLoading] = useState<boolean>(false);
 
   // ----- fetch API -----
   const productAd: JsonObject = {
-    prompt: `Write a creative ad for the following product:\n\nProduct: ${detailInput}`,
+    prompt: `Write a creative ad for the following product:\n\nProduct: ${descriptionInput}`,
     temperature: 0.5,
     max_tokens: 60,
     top_p: 1.0,
@@ -100,15 +99,16 @@ const ProductAd: React.VFC<AdNameComponentProps> = ({
       <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
-          aiAdFetch(productAd, detailInput);
+          aiAdFetch(productAd, descriptionInput);
         }}
       >
         <TextareaStyle>
-          <p>Product detail:</p>
+          <p>Product description:</p>
           <textarea
             required
-            onChange={(e) => setDetailInput(e.target.value)}
             placeholder="Learning Room is a virtual environment to help students from kindergarten to high school excel in school."
+            onChange={(e) => setDescriptionInput(e.target.value)}
+            value={descriptionInput}
           ></textarea>
         </TextareaStyle>
 

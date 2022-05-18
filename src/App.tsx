@@ -32,6 +32,9 @@ function App() {
     if (element) return element.clientHeight;
   };
 
+  // left value and height for styled components
+  const [descriptionInput, setDescriptionInput] = useState<string>("");
+
   return (
     <div className="App">
       <Header>
@@ -51,6 +54,8 @@ function App() {
                 height={height}
                 setHeight={setHeight}
                 getHeight={getHeight}
+                descriptionInput={descriptionInput}
+                setDescriptionInput={setDescriptionInput}
               />
               <ProductName
                 leftValue={leftValue}
@@ -58,6 +63,8 @@ function App() {
                 height={height}
                 setHeight={setHeight}
                 getHeight={getHeight}
+                descriptionInput={descriptionInput}
+                setDescriptionInput={setDescriptionInput}
               />
               <SharePanel
                 leftValue={leftValue}

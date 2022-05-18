@@ -178,6 +178,7 @@ export const SelectButton = styled.button<{ bColor: string }>`
   padding: 0.25rem 1rem;
   width: 8rem;
   height: 2.25rem;
+  cursor: pointer;
 
   @media ${device.desktop} {
     font-size: 1.2rem;

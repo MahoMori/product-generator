@@ -43,4 +43,4 @@ The application is responsive on mobile and tablet devices.
 
 - uploading a picture
 - change height of each panel on the right according to the contents inside
-- keep user input of description to be able to reuse in both ad generator panel and name generator panel on the right
+- optimize performance

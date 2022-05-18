@@ -32,13 +32,14 @@ const ProductName: React.VFC<AdNameComponentProps> = ({
   height,
   setHeight,
   getHeight,
+  descriptionInput,
+  setDescriptionInput,
 }) => {
   // redux
   const dispatch = useDispatch();
   const generatedTextState = useSelector((state: TStore) => state);
 
   // useState for inputs
-  const [descriptionInput, setDescriptionInput] = useState<string>("");
   const [seedWordsInput, setSeedWordsInput] = useState<string[]>(["", "", ""]);
 
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -124,6 +125,7 @@ const ProductName: React.VFC<AdNameComponentProps> = ({
             required
             placeholder="A pair of shoes that can fit any foot size."
             onChange={(e) => setDescriptionInput(e.target.value)}
+            value={descriptionInput}
           ></textarea>
         </TextareaStyle>
 
