@@ -5,7 +5,7 @@ This application generates a random product ad and product name by using
 
 ## Live Link
 
-You can view and test this application [here](https://product-generator.netlify.app/).
+You can view and test this application on [Netlify](https://product-generator.netlify.app/) or [Replit](https://product-generator.mahomorinaga.repl.co/).
 
 ## Features
 
